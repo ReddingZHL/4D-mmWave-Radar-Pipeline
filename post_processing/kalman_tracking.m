@@ -409,7 +409,7 @@ function [tracked_objects, SummaryMetrics] = kalman_tracking(all_frames_centroid
             tracked_objects(valid_count).trajectory = tracks(tIdx).history; % [4 x 存活帧数] 矩阵
         end
     end
-
+    
     % =======================================================================
     % 在函数返回前，自动打印终局物理速度分解账目
     % =======================================================================

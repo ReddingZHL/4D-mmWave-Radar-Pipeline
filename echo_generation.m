@@ -78,7 +78,7 @@ end
 
 fprintf('========= 仿真结束，正在将海量回波数据写入本地磁盘... =========\n');
 
-% 保存后级算法需要的所有原材料：回波数据、SNR、真实轨迹、雷达硬件硬件指标
+% 保存后级算法需要的所有原材料：回波数据、SNR、真实轨迹、雷达硬件指标
 % 把以下 4 份数据 装进 radar_pipeline_inputs.mat 里，-v7.3 会让 MATLAB 启动高级 HDF5 压缩算法
 save(saveFilePath, 'all_frames_SNR', 'all_frames_truth', '-append');
 fprintf('数据已成功保存至：%s。\n', saveFilePath);

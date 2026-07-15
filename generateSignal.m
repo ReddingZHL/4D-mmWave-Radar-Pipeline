@@ -13,7 +13,7 @@ function [rawData, SNR_scene_total_dB] = generateSignal(Parameter, targetnum)
     else % 飞机目标
         RCS = 2; % 假设飞机单点目标的 RCS = 2 平方米
     end
-
+    
     c = Parameter.c;                 %光速
     stratFreq = Parameter.stratFreq; %起始频率
     
@@ -96,8 +96,8 @@ function [rawData, SNR_scene_total_dB] = generateSignal(Parameter, targetnum)
             end
         end
     end
-
-
+    
+    
     % ================== 【SNR 计算】 ==================
     unique_target_ids = unique(target(:, 4)); 
     total_objects = length(unique_target_ids);

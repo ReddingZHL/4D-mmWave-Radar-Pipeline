@@ -27,7 +27,7 @@ function data_cluster = points_clustering(clusterMethod, data, targetnum, eps, m
         idx = my_dbscan(features, eps, minpoints);
 
         % 剔除噪声点（离群点）
-        outliers_mask = (idx == -1);
+        outliers_mask = (idx == -1); % 【自实现下的my_dbscan，噪声点的idx=0】
         data(outliers_mask, :) = [];
         idx(outliers_mask) = [];
         data_cluster = [data, idx]; % [dataNum, 6] 最后一列 簇标签idx（聚类ID）

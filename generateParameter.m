@@ -3,7 +3,7 @@ function parameter = generateParameter(targetnum)
     % === 定义物理常数与雷达硬件指标 ===
     parameter.kB = 1.38e-23;       % 玻尔兹曼常数
     parameter.T = 290;             % 环境温度 (K)
-    parameter.Pt = 0.0158;         % 发射功率 12 dBm
+    parameter.Pt = 0.0158;         % 发射功率 12 dBm, 10^((12 - 30) / 10)≈0.01585 W
     parameter.G_ant = 10^(15/10);  % 天线增益 15 dBi
     parameter.Loss = 10^(4/10);    % 系统损耗 4 dB
     parameter.NoiseFigure = 10^(10/10); % 接收机噪声系数 10 dB

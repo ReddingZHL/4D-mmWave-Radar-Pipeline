@@ -72,7 +72,7 @@ function CfarDoaMetrics = calculate_radar_metrics(targets, centroids, gates, tot
         CfarDoaMetrics.Cluster_Pfa = num_detect_clusters / total_bins; 
         return;
     end
-
+    
     % --- 阶段 4：点迹级别的唯一性占位匹配 ---
     detect_cluster_used = false(num_detect_clusters, 1);
     hit_target_count = 0;

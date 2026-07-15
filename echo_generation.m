@@ -4,8 +4,6 @@ targetnum = 2; % 1-点目标  2-飞机目标
 Parameter = generateParameter(targetnum);
 numFrames = Parameter.numFrames;   % 帧数
 T_frame = Parameter.T_frame;     % 帧周期
-% 预分配一个元胞数组，用来记录每一帧 聚类 凝聚出来的 "干净质心点迹”
-all_frames_centroids = cell(numFrames, 1);
 % 备份初始目标设置，因为在帧循环中我们需要动态更新它们的距离
 initial_targets = Parameter.target; % range speed horizontalangle TargetID
 numTargets = size(initial_targets, 1); % 多目标组成的点目标总数，根据这些点目标的TargetID可得到实际目标数

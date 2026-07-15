@@ -13,7 +13,7 @@ function [pointList, cfarRD] = cfar_detection_2D(accumulateRD, targetnum)
         %【针对飞机目标的调谐：2D 下适当放宽保护区，降低门限以捞出机翼等散射点迹】
         r_guard = 4;  r_train = 6; 8; 
         d_guard = 4;  d_train = 6;  8;
-        cfar_SNR_dB = 5.5;      3.5;    
+        cfar_SNR_dB = 5.5;3.5;          
     end
     
     % =======================================================================

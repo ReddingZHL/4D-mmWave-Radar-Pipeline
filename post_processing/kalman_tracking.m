@@ -63,8 +63,8 @@ function [tracked_objects, SummaryMetrics] = kalman_tracking(all_frames_centroid
     % tracks(k).status   : 'tentative' (暂态) 或 'active' (激活-连续两帧稳定存在)
     % tracks(k).hit      : 连续匹配成功计数（命中），目标在所有帧的连续打卡记录
     % tracks(k).miss     : 连续漏检计数（漏检），与命中此消彼长，一旦一帧出现漏检，hit强制清零
-    % tracks(k).history  : 存储卡尔曼滤波平滑后的 [X, Y, Vx, Vy] 矩阵，若目标存活了50帧，那么history最终就是一个[4,50]的矩阵
-    tracks = []; 
+    % tracks(k).history  : 存储卡尔曼滤波平滑后的 [X, Y, Vx, Vy] 矩阵，若目标存活了50帧，那么history最终就是一个[4,50]的矩阵 
+    tracks = struct('id', {}, 'x', {}, 'P', {}, 'status', {}, 'hit', {}, 'miss', {}, 'history', {});
     next_id = 1; % 航迹 ID 计数器
     
     frame_range_se = []; % 存储所有成功关联上的点迹的 距离误差平方
@@ -129,7 +129,7 @@ function [tracked_objects, SummaryMetrics] = kalman_tracking(all_frames_centroid
                     cost_matrix(:, m_match) = inf;
                 end
             end
-
+    
             % 3. 卡尔曼【更新】与航迹生命周期【状态机】更新
             updated_tracks_idx = [];
             for tIdx = 1:numTracks
@@ -281,8 +281,7 @@ function [tracked_objects, SummaryMetrics] = kalman_tracking(all_frames_centroid
                 new_track.hit = 1;
                 new_track.miss = 0;
                 new_track.history = new_track.x; % 记入首个点
-                
-                tracks = [tracks, new_track];
+                tracks(end + 1) = new_track;
                 next_id = next_id + 1;
             end
         end
